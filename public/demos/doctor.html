@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="دکتر من؛ معرفی خدمات سلامت، نوبت‌دهی پزشکان و مشاوره آنلاین">
+<title>دکتر من | سلامت و پزشکی</title>
+<style>
+:root{--navy:#122638;--teal:#0799a5;--green:#08a88a;--ink:#172b3b;--muted:#60788a;--pale:#eef9fb;--line:#dcebf0;--white:#fff}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Tahoma,Arial,sans-serif;color:var(--ink);background:#fff;line-height:1.8}
+a{color:inherit;text-decoration:none}.container{width:min(1120px,92%);margin:auto}
+header{background:var(--navy);color:#fff;position:sticky;top:0;z-index:10;box-shadow:0 4px 18px #12263818}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:22px;min-height:72px}.brand{font-size:1.25rem;font-weight:800;white-space:nowrap}.brand span{color:#23d0d3}.navlinks{display:flex;align-items:center;gap:24px;font-size:.92rem}.navlinks a:hover{color:#54d9da}.navbtn{border:1px solid #66808f;border-radius:12px;padding:8px 14px}
+.hero{background:linear-gradient(110deg,#f8fdff 0%,#e5f6fb 56%,#d6eef5 100%);overflow:hidden}
+.hero-inner{min-height:430px;display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:25px;padding-top:30px;padding-bottom:30px}
+.eyebrow{display:inline-block;background:#d8f2f5;color:#147b89;border-radius:30px;padding:5px 14px;font-size:.84rem;font-weight:bold}
+h1{font-size:clamp(2rem,4vw,3.25rem);line-height:1.4;margin:16px 0}h1 span,.accent{color:var(--teal)}.lead{color:#426174;font-size:1.05rem;max-width:560px}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:14px;padding:12px 22px;font:inherit;font-weight:bold;cursor:pointer;transition:.2s}.btn:hover{transform:translateY(-2px)}.primary{background:linear-gradient(120deg,var(--green),#078ba6);color:#fff;box-shadow:0 8px 20px #0799a52a}.secondary{border:1px solid #8ebdca;color:#1a5b70;background:#ffffffa8}
+.hero-art{min-height:310px;display:grid;place-items:center;position:relative}.doctor-card{width:min(380px,100%);aspect-ratio:1.05/1;border-radius:34px;background:linear-gradient(145deg,#ffffffd9,#c3e8f1);border:1px solid #ffffff;box-shadow:0 22px 55px #1c698022;display:grid;place-items:center;position:relative;overflow:hidden}
+.doctor-icon{font-size:9rem;filter:drop-shadow(0 12px 10px #153b4b20)}.floating{position:absolute;background:#fff;border-radius:18px;padding:12px 16px;box-shadow:0 10px 30px #183c4b18;font-size:.88rem;font-weight:bold}.float-a{top:22px;right:-2px}.float-b{bottom:26px;left:-2px}.pulse{position:absolute;width:150px;height:150px;border:2px solid #80d2dc;border-radius:50%;opacity:.45;left:10px;top:20px}
+.features{padding:32px 0}.feature-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.feature{text-align:center;padding:14px 12px}.feature .ico{width:62px;height:62px;border-radius:50%;display:grid;place-items:center;background:#e5f7f8;color:#078d9a;font-size:1.8rem;margin:0 auto 8px}.feature h3{font-size:1rem;margin:6px}.feature p{font-size:.87rem;color:var(--muted);margin:0}
+.app-section{background:linear-gradient(110deg,#f1fbfd,#e1f4f8);padding:55px 0}.app-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:50px;align-items:center}.phone{width:220px;max-width:100%;margin:auto;background:#102536;padding:9px;border-radius:34px;box-shadow:0 22px 45px #17435425;transform:rotate(-5deg)}.screen{background:#fafdff;border-radius:27px;min-height:340px;padding:22px 14px}.screen-head{font-weight:bold;color:#087d91;text-align:center;margin-bottom:20px}.searchbox{background:#eaf3f6;border-radius:12px;padding:9px;font-size:.76rem;color:#6b8290}.app-tiles{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}.app-tile{background:#fff;border:1px solid #e0edf0;border-radius:14px;text-align:center;padding:15px 5px;font-size:.78rem}.app-tile b{display:block;font-size:1.5rem;color:#078e9c}.checklist{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:20px 0;color:#466477;font-size:.91rem}.checklist span:before{content:"✓";color:#079b8b;font-weight:bold;margin-left:8px}
+.section{padding:48px 0}.section-title{text-align:center;margin-bottom:28px}.section-title h2{margin:0 0 5px;font-size:1.7rem}.section-title p{margin:0;color:var(--muted)}
+.specialties{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.specialty{border:1px solid var(--line);border-radius:17px;padding:20px 12px;text-align:center;background:#fff;box-shadow:0 5px 16px #1b4c5d08;transition:.2s}.specialty:hover{border-color:#8ad4da;transform:translateY(-3px)}.specialty .ico{font-size:1.9rem}.specialty h3{font-size:.95rem;margin:5px 0}.specialty p{color:var(--muted);font-size:.78rem;margin:0}
+.cta{background:var(--navy);color:white;border-radius:24px;padding:30px;display:flex;justify-content:space-between;align-items:center;gap:20px}.cta p{color:#c2d4df;margin:5px 0 0}
+.contact{background:#f6fbfc;padding:42px 0}.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:35px;align-items:start}.contact-form{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px;display:grid;gap:12px}.contact-form input,.contact-form select,.contact-form textarea{width:100%;border:1px solid #d7e5e9;border-radius:10px;padding:12px;font:inherit;background:#fff}.contact-form label{font-size:.88rem;font-weight:bold}.note{font-size:.8rem;color:#6b8290}
+footer{background:#0d1e2c;color:#dce8ee;padding:30px 0 18px}.footer-top{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}.footer-links{display:flex;gap:18px;flex-wrap:wrap;font-size:.88rem}.copyright{text-align:center;border-top:1px solid #29404e;margin-top:22px;padding-top:14px;font-size:.8rem;color:#aabdc8}
+.toast{display:none;margin-top:10px;padding:10px;border-radius:10px;background:#e4f8f0;color:#17664d;font-size:.9rem}
+@media(max-width:800px){.nav{flex-wrap:wrap;padding:12px 0}.navlinks{order:3;width:100%;overflow:auto;gap:18px;padding-bottom:5px}.navlinks a{white-space:nowrap}.hero-inner{grid-template-columns:1fr;text-align:center}.lead{margin-inline:auto}.actions{justify-content:center}.hero-art{min-height:250px}.doctor-card{width:260px}.doctor-icon{font-size:7rem}.feature-grid{grid-template-columns:repeat(2,1fr)}.app-grid{grid-template-columns:1fr;gap:30px}.phone{order:2}.specialties{grid-template-columns:repeat(2,1fr)}.contact-grid{grid-template-columns:1fr}.cta{flex-direction:column;text-align:center}}
+@media(max-width:420px){.navbtn{font-size:.8rem;padding:7px 9px}.brand{font-size:1.05rem}.feature-grid{gap:5px}.section{padding:36px 0}.checklist{grid-template-columns:1fr}.cta{padding:24px 18px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="container nav">
+    <a class="brand" href="#home"><span>⌘</span> دکتر من</a>
+    <nav class="navlinks" aria-label="منوی اصلی">
+      <a href="#home">خانه</a><a href="#services">خدمات</a><a href="#specialties">تخصص‌ها</a><a href="#about">درباره ما</a><a href="#contact">تماس با ما</a>
+    </nav>
+    <a class="navbtn" href="#appointment">ورود / ثبت درخواست</a>
+  </div>
+</header>
+<main>
+<section class="hero" id="home">
+  <div class="container hero-inner">
+    <div>
+      <span class="eyebrow">دکتر من | فناوری برای زندگی بهتر</span>
+      <h1>سلامت، قدمی به سوی<br><span>آینده‌ای بهتر</span></h1>
+      <p class="lead">با پروژه دکتر من، مسیر دسترسی به خدمات پزشکی را ساده‌تر می‌کنیم. پزشک موردنظر خود را پیدا کنید و برای نوبت یا مشاوره آنلاین درخواست بفرستید.</p>
+      <div class="actions"><a class="btn primary" href="#appointment">▦ دریافت نوبت</a><a class="btn secondary" href="#services">▣ مشاوره آنلاین</a></div>
+    </div>
+    <div class="hero-art" aria-label="تصویرسازی خدمات پزشکی">
+      <div class="doctor-card"><div class="pulse"></div><div class="doctor-icon">🩺</div><div class="floating float-a">♡ سلامت شما مهم است</div><div class="floating float-b">✚ خدمات پزشکی</div></div>
+    </div>
+  </div>
+</section>
+<section class="features" id="services"><div class="container feature-grid">
+  <div class="feature"><div class="ico">♧</div><h3>امنیت و اعتماد</h3><p>حفظ حریم خصوصی کاربران از اصول مهم ماست.</p></div>
+  <div class="feature"><div class="ico">♙</div><h3>اطلاعات پزشکان</h3><p>مشاهده مشخصات و تخصص پزشک‌ها.</p></div>
+  <div class="feature"><div class="ico">◷</div><h3>درخواست نوبت آسان</h3><p>ارسال درخواست در چند مرحله ساده.</p></div>
+  <div class="feature"><div class="ico">☏</div><h3>پشتیبانی</h3><p>راه ارتباطی برای پرسش‌ها و پیگیری‌ها.</p></div>
+</div></section>
+<section class="app-section" id="about"><div class="container app-grid">
+  <div class="phone"><div class="screen"><div class="screen-head">دکتر من</div><div class="searchbox">⌕ جست‌وجوی پزشک یا تخصص...</div><div class="app-tiles"><div class="app-tile"><b>♙</b>پزشکان</div><div class="app-tile"><b>▦</b>نوبت‌دهی</div><div class="app-tile"><b>▣</b>مشاوره آنلاین</div><div class="app-tile"><b>♡</b>خدمات سلامت</div></div><p style="text-align:center;color:#78909b;font-size:.75rem;margin-top:24px">پیش‌نمایش مفهومی اپلیکیشن</p></div></div>
+  <div><span class="eyebrow">درباره پروژه</span><h2 style="font-size:2rem;margin:12px 0">اپلیکیشن <span class="accent">دکتر من</span></h2><h3>فناوری در خدمت تجربه بهتر سلامت</h3><p style="color:var(--muted)">هدف این پروژه، فراهم‌کردن دسترسی ساده‌تر به اطلاعات پزشکان و خدمات سلامت است. این نسخه اولیه، مسیر معرفی خدمات و ثبت درخواست را فراهم می‌کند تا در مراحل بعدی امکانات واقعی به آن متصل شود.</p><div class="checklist"><span>معرفی پزشکان</span><span>درخواست نوبت</span><span>دسترسی آسان با موبایل</span><span>قابلیت توسعه در آینده</span></div><a class="btn secondary" href="#contact">بیشتر بدانید ←</a></div>
+</div></section>
+<section class="section" id="specialties"><div class="container"><div class="section-title"><h2>دسته‌بندی تخصص‌ها</h2><p>برای شروع، تخصص موردنظر خود را انتخاب کنید</p></div><div class="specialties">
+  <a class="specialty" href="#appointment" data-specialty="عمومی"><div class="ico">🩺</div><h3>پزشک عمومی</h3><p>مشاهده و درخواست نوبت</p></a>
+  <a class="specialty" href="#appointment" data-specialty="قلب و عروق"><div class="ico">💗</div><h3>قلب و عروق</h3><p>مشاهده و درخواست نوبت</p></a>
+  <a class="specialty" href="#appointment" data-specialty="پوست و مو"><div class="ico">✦</div><h3>پوست و مو</h3><p>مشاهده و درخواست نوبت</p></a>
+  <a class="specialty" href="#appointment" data-specialty="کودکان"><div class="ico">🧸</div><h3>کودکان</h3><p>مشاهده و درخواست نوبت</p></a>
+  <a class="specialty" href="#appointment" data-specialty="زنان و زایمان"><div class="ico">⚕</div><h3>زنان و زایمان</h3><p>مشاهده و درخواست نوبت</p></a>
+  <a class="specialty" href="#appointment" data-specialty="ارتوپدی"><div class="ico">🦴</div><h3>ارتوپدی</h3><p>مشاهده و درخواست نوبت</p></a>
+  <a class="specialty" href="#appointment" data-specialty="دندان‌پزشکی"><div class="ico">🦷</div><h3>دندان‌پزشکی</h3><p>مشاهده و درخواست نوبت</p></a>
+  <a class="specialty" href="#appointment" data-specialty="گوش و حلق و بینی"><div class="ico">◉</div><h3>گوش و حلق و بینی</h3><p>مشاهده و درخواست نوبت</p></a>
+</div></div></section>
+<section class="container section" id="appointment"><div class="cta"><div><h2 style="margin:0">برای دریافت نوبت آماده‌اید؟</h2><p>درخواست خود را ثبت کنید؛ این فرم در نسخه نمایشی است و هنوز به سامانه نوبت‌دهی متصل نیست.</p></div><a class="btn primary" href="#request-form">ثبت درخواست نوبت ←</a></div></section>
+<section class="contact" id="contact"><div class="container contact-grid">
+  <div><h2>تماس با دکتر من</h2><p style="color:var(--muted)">برای همکاری، پیشنهاد یا پیگیری پروژه سلامت، پیام خود را از طریق فرم روبه‌رو ثبت کنید.</p><p>✉ ایمیل: <span class="accent">نشانی ایمیل انجمن را وارد کنید</span></p><p>⌖ شبکه‌های اجتماعی: <span class="accent">پیوندهای انجمن را اضافه کنید</span></p><p class="note">اطلاعات تماس بالا نمونه هستند و باید با اطلاعات واقعی انجمن جایگزین شوند.</p></div>
+  <form class="contact-form" id="request-form">
+    <h3 style="margin:0">فرم درخواست نوبت / تماس</h3>
+    <div><label for="fullname">نام و نام خانوادگی</label><input id="fullname" name="fullname" required placeholder="نام شما"></div>
+    <div><label for="phone">شماره تماس</label><input id="phone" name="phone" required inputmode="tel" placeholder="شماره تماس شما"></div>
+    <div><label for="specialty">خدمت موردنظر</label><select id="specialty" name="specialty"><option value="درخواست نوبت">درخواست نوبت</option><option value="مشاوره آنلاین">مشاوره آنلاین</option><option>عمومی</option><option>قلب و عروق</option><option>پوست و مو</option><option>کودکان</option><option>زنان و زایمان</option><option>ارتوپدی</option><option>دندان‌پزشکی</option><option>گوش و حلق و بینی</option></select></div>
+    <div><label for="message">توضیحات (اختیاری)</label><textarea id="message" name="message" rows="3" placeholder="زمان مناسب یا توضیح کوتاه"></textarea></div>
+    <button class="btn primary" type="submit">ثبت نمایشی درخواست</button><div class="toast" id="toast" role="status"></div>
+    <p class="note">برای حفظ حریم خصوصی، فعلاً اطلاعات حساس پزشکی را در این فرم وارد نکنید. ارسال واقعی اطلاعات پس از اتصال امن به سرور فعال می‌شود.</p>
+  </form>
+</div></section>
+</main>
+<footer><div class="container"><div class="footer-top"><a class="brand" href="#home"><span>⌘</span> دکتر من</a><div class="footer-links"><a href="#home">خانه</a><a href="#services">خدمات</a><a href="#about">درباره ما</a><a href="#specialties">تخصص‌ها</a><a href="#contact">تماس با ما</a></div></div><div class="copyright">© دکتر من — نسخه اولیه نمایشی؛ همه حقوق محفوظ است.</div></div></footer>
+<script>
+document.querySelectorAll('[data-specialty]').forEach(el=>el.addEventListener('click',()=>{document.getElementById('specialty').value=el.dataset.specialty}));
+document.getElementById('request-form').addEventListener('submit',function(e){e.preventDefault();const t=document.getElementById('toast');t.style.display='block';t.textContent='فرم آزمایشی تکمیل شد؛ برای دریافت واقعی درخواست‌ها باید سایت به سرور یا سرویس فرم متصل شود.';});
+</script>
+<a href="../portfolio.html" style="position:fixed;bottom:14px;left:14px;z-index:99999;padding:8px 16px;border-radius:20px;background:#0b0d17;color:#00d2ff;border:1px solid #00d2ff;font:700 13px Tahoma,sans-serif;text-decoration:none">← Codin</a></body>
+</html>
