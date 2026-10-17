@@ -137,16 +137,40 @@ function apply(){
 }
 // all forms with data-api post JSON to the backend
 document.addEventListener('submit',async e=>{
- const f=e.target;if(f.dataset.api===undefined)return;e.preventDefault();
- const m=f.querySelector('.msg'),btn=f.querySelector('.b'),s=S[lang];btn.disabled=true;m.className='msg';m.textContent=s.sending;
- try{
-  const r=await fetch(API+f.dataset.api,{method:'POST',headers:{'content-type':'application/json','accept-language':lang},body:JSON.stringify(Object.fromEntries(new FormData(f)))});
-  const j=await r.json().catch(()=>({}));if(!r.ok)throw Error(j.error||s.err);
-  if(j.token){localStorage.token=j.token;localStorage.user=JSON.stringify(j.user)}
-  m.className='msg ok';m.textContent=j.token?s.hi:s.ok;f.reset();
-  if(j.token)setTimeout(()=>{$('#dlg').close();apply();document.dispatchEvent(new Event('authchange'))},700);
- }catch(x){m.className='msg er';m.textContent=x.message==='Failed to fetch'?s.err:x.message}
- btn.disabled=false;
+const f=e.target;
+if(f.id!=='af')return;
+e.preventDefault();
+alert('فرم ثبت شد؛ اتصال به بک‌اند در حال بررسی است.');
+const m=f.querySelector('.msg'),btn=f.querySelector('.b'),s=S[lang];
+btn.disabled=true;
+m.className='msg';
+m.textContent=s.sending;
+try{
+const r=await fetch(API+f.dataset.api,{
+method:'POST',
+headers:{'content-type':'application/json','accept-language':lang},
+body:JSON.stringify(Object.fromEntries(new FormData(f)))
+});
+const j=await r.json().catch(()=>({}));
+if(!r.ok)throw Error(j.error||s.err);
+if(j.token){
+localStorage.token=j.token;
+localStorage.user=JSON.stringify(j.user);
+}
+m.className='msg ok';
+m.textContent=j.token?s.hi:s.ok;
+f.reset();
+if(j.token)setTimeout(()=>{
+$('#dlg').close();
+apply();
+document.dispatchEvent(new Event('authchange'));
+},700);
+}catch(x){
+m.className='msg er';
+m.textContent=x.message==='Failed to fetch'?s.err:x.message;
+}finally{
+btn.disabled=false;
+}
 });
 layout();apply();
 
