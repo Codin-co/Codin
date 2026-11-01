@@ -6,11 +6,11 @@ fs.mkdirSync(DIR, { recursive: true });
 
 // ---- storage (JSON file, atomic write) ----
 let db = { users: [], messages: [] }; try { db = JSON.parse(fs.readFileSync(DBF)); } catch {}
-let timer; const save = () => { clearTimeout(timer); timer = setTimeout(() => { fs.writeFileSync(DBF + '.tmp', JSON.stringify(db)); fs.renameSync(DBF + '.tmp', DBF); }, 150); };
+let timer; const save = () => { clearTimeout(timer); timer = setTimeout(() => { try { fs.writeFileSync(DBF + '.tmp', JSON.stringify(db)); fs.renameSync(DBF + '.tmp', DBF); } catch (e) { console.error('db save failed:', e.message); } }, 150); };
 
 // ---- crypto: scrypt passwords + HMAC signed tokens ----
 const SF = path.join(DIR, '.secret');
-const SECRET = process.env.SECRET || (fs.existsSync(SF) ? fs.readFileSync(SF, 'utf8') : (() => { const s = c.randomBytes(32).toString('hex'); fs.writeFileSync(SF, s); return s; })());
+const SECRET = process.env.SECRET || (fs.existsSync(SF) ? fs.readFileSync(SF, 'utf8') : (() => { const s = c.randomBytes(32).toString('hex'); try { fs.writeFileSync(SF, s); } catch (e) { console.error('secret save failed:', e.message); } return s; })());
 const mac = p => c.createHmac('sha256', SECRET).update(p).digest('base64url');
 const sign = u => { const p = Buffer.from(JSON.stringify({ id: u.id, exp: Date.now() + 7 * 864e5 })).toString('base64url'); return p + '.' + mac(p); };
 const same = (a, b) => a.length === b.length && c.timingSafeEqual(Buffer.from(a), Buffer.from(b));
@@ -53,7 +53,7 @@ const routes = {
 };
 
 // ---- static files (cached in memory, gzip) ----
-const MIME = { '.html': 'text/html; charset=utf-8', '.css': 'text/css', '.js': 'text/javascript', '.json': 'application/json', '.webp': 'image/webp', '.png': 'image/png', '.svg': 'image/svg+xml', '.ico': 'image/x-icon' };
+const MIME = { '.html': 'text/html; charset=utf-8', '.css': 'text/css', '.js': 'text/javascript', '.json': 'application/json', '.webp': 'image/webp', '.png': 'image/png', '.svg': 'image/svg+xml', '.ico': 'image/x-icon', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.mp4': 'video/mp4', '.webmanifest': 'application/manifest+json', '.webm': 'video/webm', '.woff2': 'font/woff2' };
 const cache = new Map();
 function serve(req, res) {
   let p = decodeURIComponent(req.url.split('?')[0]); if (p.endsWith('/')) p += 'index.html';
@@ -63,11 +63,19 @@ function serve(req, res) {
   try { st = fs.statSync(file); } catch { return res.writeHead(404, { 'content-type': 'text/plain; charset=utf-8' }).end('404 | پیدا نشد'); }
   if (!e || e.mtime !== st.mtimeMs) {
     const raw = fs.readFileSync(file), ext = path.extname(file), text = /html|css|javascript|json|svg/.test(MIME[ext] || '');
-    e = { mtime: st.mtimeMs, type: MIME[ext] || 'application/octet-stream', raw, gz: text ? zlib.gzipSync(raw, { level: 9 }) : null, etag: '"' + c.createHash('md5').update(raw).digest('hex').slice(0, 16) + '"', long: !ext.includes('html') };
+    e = { mtime: st.mtimeMs, type: MIME[ext] || 'application/octet-stream', raw, gz: text ? zlib.gzipSync(raw, { level: 9 }) : null, etag: '"' + c.createHash('md5').update(raw).digest('hex').slice(0, 16) + '"', long: !/\.(html|js|css)$/.test(ext) };
     cache.set(file, e);
   }
   const h = { 'content-type': e.type, etag: e.etag, 'cache-control': e.long ? 'public, max-age=604800' : 'no-cache', vary: 'Accept-Encoding' };
   if (req.headers['if-none-match'] === e.etag) return res.writeHead(304, h).end();
+  h['accept-ranges'] = 'bytes';
+  const rg = /^bytes=(\d*)-(\d*)$/.exec(req.headers.range || '');
+  if (rg && !e.gz) {
+    let a = rg[1] === '' ? Math.max(0, e.raw.length - +rg[2]) : +rg[1], z = rg[1] === '' || rg[2] === '' ? e.raw.length - 1 : Math.min(+rg[2], e.raw.length - 1);
+    if (a > z || a >= e.raw.length) return res.writeHead(416, { 'content-range': 'bytes */' + e.raw.length }).end();
+    h['content-range'] = `bytes ${a}-${z}/${e.raw.length}`; h['content-length'] = z - a + 1;
+    return res.writeHead(206, h).end(e.raw.subarray(a, z + 1));
+  }
   const gz = e.gz && /gzip/.test(req.headers['accept-encoding'] || '');
   if (gz) h['content-encoding'] = 'gzip';
   res.writeHead(200, h).end(gz ? e.gz : e.raw);
@@ -77,7 +85,7 @@ function serve(req, res) {
 http.createServer(async (req, res) => {
   res.setHeader('X-Content-Type-Options', 'nosniff'); res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
   if (!req.url.startsWith('/api/')) return serve(req, res);
-  const lang = /^en/i.test(req.headers['accept-language'] || '') ? 1 : 0, ip = req.socket.remoteAddress;
+  const lang = /^en/i.test(req.headers['accept-language'] || '') ? 1 : 0, ip = String(req.headers['x-forwarded-for'] || req.socket.remoteAddress).split(',')[0].trim();
   const send = (code, obj) => res.writeHead(code, { 'content-type': 'application/json; charset=utf-8' }).end(JSON.stringify(obj));
   try {
     const route = routes[req.method + ' ' + req.url.split('?')[0]];
