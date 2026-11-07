@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>حساب من | Codin</title><meta name="robots" content="noindex"><link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700;800&display=swap" media="print" onload="this.media='all'">
+<link rel="apple-touch-icon" href="img/icon-192.png"><link rel="manifest" href="manifest.webmanifest">
+<style>:root{--bg:#0b0d17;--card:#131728;--b:#00d2ff;--p:#9d00ff;--t:#e2e8f0;--m:#94a3b8;--line:rgba(255,255,255,.08);--g:linear-gradient(45deg,var(--b),var(--p))}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--t);font:16px/1.7 Vazirmatn,Tahoma,system-ui,sans-serif;padding-top:70px;padding-bottom:96px;overflow-x:hidden}
+body.en{direction:ltr}a{color:inherit;text-decoration:none}img{max-width:100%;display:block}
+.w{width:min(1000px,92%);margin:auto}section{padding:40px 0}
+#hdr{position:fixed;inset:0 0 auto;height:70px;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0 5%;background:rgba(11,13,23,.92);border-bottom:1px solid var(--line)}
+#hdr img{height:44px;width:auto}#nav{display:flex;gap:26px;font-weight:600;font-size:.95rem}#nav a:hover,#nav a.on{color:var(--b)}
+.hb{display:flex;gap:10px;align-items:center}#auth{white-space:nowrap;max-width:150px;overflow:hidden;text-overflow:ellipsis;padding:0 14px}#mb{display:none}
+.b{height:38px;padding:0 18px;border-radius:20px;border:0;cursor:pointer;font:inherit;font-weight:700;font-size:.85rem;color:#fff;background:var(--g);display:inline-flex;align-items:center;justify-content:center;transition:.25s}
+.b.o{background:transparent;color:var(--b);border:1px solid var(--b)}.b.s{background:var(--card);border:1px solid var(--line)}.b.big{height:46px;padding:0 30px;font-size:1rem}.b:disabled{opacity:.6;cursor:wait}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px}
+label{display:block;font-size:.85rem;color:var(--m);margin:12px 0 5px}
+input,textarea,select{width:100%;padding:11px 14px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:#fff;font:inherit;outline:none}
+input:focus,textarea:focus,select:focus{border-color:var(--b)}textarea{height:120px;resize:vertical}
+.msg{margin-top:10px;text-align:center;font-size:.9rem;min-height:1.4em}.ok{color:#34d399}.er{color:#f87171}
+dialog{margin:auto;width:min(400px,92%);padding:28px;border-radius:20px;background:var(--card);color:var(--t);border:1px solid rgba(0,210,255,.25)}dialog::backdrop{background:rgba(0,0,0,.75)}
+.tabs{display:flex;gap:8px;margin:0 0 6px}.tabs button{flex:1;height:38px;border-radius:10px;border:1px solid var(--line);background:none;color:var(--m);font:inherit;font-weight:700;cursor:pointer}.tabs .on{background:var(--g);color:#fff;border-color:transparent}
+footer{background:#07080f;border-top:1px solid var(--line);padding:36px 0 18px;color:var(--m);font-size:.9rem}footer .w{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}footer img{height:44px;margin-bottom:8px}footer ul{list-style:none;display:grid;gap:6px}footer .cp{text-align:center;margin-top:18px;font-size:.8rem}
+@media(max-width:850px){#mb{display:block}#nav{display:none}}
+/* ---- account page ---- */
+.hello{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.av{width:62px;height:62px;border-radius:50%;display:grid;place-items:center;font-size:1.5rem;font-weight:800;color:#fff;background:var(--g);flex:none}
+.hello h1{font-size:1.35rem;line-height:1.4}.hello p{color:var(--m);font-size:.88rem}
+.stat3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px}
+.stat3 div{text-align:center;padding:12px 6px;border-radius:12px;border:1px solid var(--line)}.stat3 b{display:block;font-size:1.5rem;color:var(--b);line-height:1.3}.stat3 span{font-size:.78rem;color:var(--m)}
+.at{margin:18px 0 12px;overflow-x:auto;flex-wrap:nowrap}.at button{white-space:nowrap;padding:0 14px;flex:1 0 auto}
+.ol{display:grid;gap:14px}.ord{padding:18px}
+.oh{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;flex-wrap:wrap}
+.oh h3{font-size:1.05rem;line-height:1.5}.oh small{color:var(--m);display:block;font-size:.78rem}
+.pill{display:inline-block;padding:2px 12px;border-radius:20px;font-size:.78rem;font-weight:700;border:1px solid var(--line);white-space:nowrap}
+.pill.new{color:#fbbf24;border-color:rgba(251,191,36,.4)}.pill.review{color:#60a5fa;border-color:rgba(96,165,250,.4)}.pill.progress{color:var(--b);border-color:rgba(0,210,255,.4)}.pill.delivered{color:#34d399;border-color:rgba(52,211,153,.4)}.pill.cancelled{color:#f87171;border-color:rgba(248,113,113,.4)}
+.trk{display:grid;grid-template-columns:repeat(4,1fr);margin:18px 0 6px;position:relative}
+.trk i{position:relative;text-align:center;font-style:normal;font-size:.72rem;color:var(--m)}
+.trk i:before{content:"";display:block;width:16px;height:16px;border-radius:50%;margin:0 auto 6px;background:var(--bg);border:2px solid var(--line);position:relative;z-index:1}
+.trk i:after{content:"";position:absolute;top:7px;inset-inline-start:50%;width:100%;height:2px;background:var(--line)}
+.trk i:last-child:after{display:none}
+.trk i.d:before{background:var(--b);border-color:var(--b)}.trk i.d:after{background:var(--b)}.trk i.c{color:var(--t);font-weight:700}
+.trk.x i:before{border-color:#f87171;background:transparent}
+.det{margin-top:12px;border-top:1px solid var(--line);padding-top:12px}
+.det p{color:var(--m);font-size:.9rem;white-space:pre-wrap;word-break:break-word}.det .meta{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}
+.log{list-style:none;margin:14px 0 0;display:grid;gap:8px}
+.log li{padding:9px 12px;border-radius:12px;border:1px solid var(--line);font-size:.86rem;word-break:break-word}
+.log li.admin{border-color:rgba(0,210,255,.35);background:rgba(0,210,255,.06)}.log li.user{background:rgba(255,255,255,.03)}
+.log li small{display:block;color:var(--m);font-size:.72rem}
+.nf{display:flex;gap:8px;margin-top:12px}.nf input{flex:1}.nf .b{height:42px;flex:none}
+.act{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.emp{text-align:center;color:var(--m);padding:34px 10px}.emp b{display:block;font-size:2rem}
+.gst{text-align:center;padding:50px 22px}.gst .ico{font-size:2.6rem;width:72px;height:72px;margin:0 auto 12px;border-radius:50%;display:grid;place-items:center;background:var(--g);box-shadow:none}.gst p{color:var(--m);margin:8px 0 22px}
+.adm .ad{display:grid;gap:8px;margin-top:12px}.adm .ad select,.adm .ad input{height:40px;padding:0 12px}
+.adm .who{font-size:.82rem;color:var(--m);direction:ltr;text-align:start}
+.sg{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media(max-width:700px){.sg{grid-template-columns:1fr}}
+.card form .b{width:100%;margin-top:16px}
+[hidden]{display:none!important}
+</style><meta name="theme-color" content="#0a1b2b"><link rel="stylesheet" href="css/theme.css"><link rel="stylesheet" href="css/bg.css"><script src="js/bg.js" defer></script></head>
+<body>
+<header id="hdr"></header>
+<section><div class="w">
+ <div id="guest" class="card gst" hidden><div class="ico">🔐</div><h2 data-en="Your personal area">بخش اختصاصی شما</h2><p data-en="Log in to track your orders, send new requests and manage your profile.">برای پیگیری سفارش‌ها، ثبت درخواست جدید و مدیریت پروفایل وارد حساب خود شوید.</p><button class="b big" id="gl" data-en="Log in / Sign up">ورود / ثبت‌نام</button></div>
+ <div id="app" hidden>
+  <div class="card"><div class="hello"><div class="av" id="av"></div><div><h1 id="hn"></h1><p id="he" dir="ltr"></p><p id="hs"></p></div></div>
+   <div class="stat3"><div><b id="s1">0</b><span data-en="All orders">همه سفارش‌ها</span></div><div><b id="s2">0</b><span data-en="In progress">در جریان</span></div><div><b id="s3">0</b><span data-en="Delivered">تحویل‌شده</span></div></div></div>
+  <div class="tabs at" id="tabs"><button data-t="orders" class="on"></button><button data-t="new"></button><button data-t="profile"></button><button data-t="admin" hidden></button></div>
+  <div id="v-orders"><div class="ol" id="ol"></div></div>
+  <div id="v-new" hidden><form class="card" id="nf" novalidate><label id="l-type"></label><select name="type" id="ty"></select><label id="l-title"></label><input name="title" maxlength="80" required><label id="l-desc"></label><textarea name="desc" maxlength="1500" required></textarea><label id="l-budget"></label><input name="budget" maxlength="40"><button class="b" id="nsub"></button><div class="msg" id="nmsg"></div></form></div>
+  <div id="v-profile" hidden><div class="sg"><form class="card" id="pf" novalidate><h3 id="h-prof"></h3><label id="l-name"></label><input name="name" minlength="2" maxlength="60" required><label id="l-mail"></label><input id="pm" dir="ltr" disabled><button class="b" id="psub"></button><div class="msg" id="pmsg"></div></form>
+   <form class="card" id="wf" novalidate><h3 id="h-pass"></h3><label id="l-cur"></label><input name="current" type="password" autocomplete="current-password" required><label id="l-new"></label><input name="password" type="password" minlength="8" autocomplete="new-password" required><button class="b" id="wsub"></button><div class="msg" id="wmsg"></div></form></div></div>
+  <div id="v-admin" hidden><div class="ol adm" id="al"></div></div>
+ </div>
+</div></section>
+<footer id="ftr"></footer>
+<script src="js/app.js"></script>
+<script>
+(()=>{
+const D={fa:{orders:'سفارش‌های من',nw:'سفارش جدید',prof:'پروفایل',admin:'مدیریت',
+ st:{new:'ثبت شد',review:'در حال بررسی',progress:'در حال اجرا',delivered:'تحویل شد',cancelled:'لغو شد'},
+ ty:{web:'وب‌سایت',mobile:'اپلیکیشن موبایل',ai:'هوش مصنوعی',security:'امنیت',other:'سایر'},
+ since:'عضو از',code:'کد پیگیری',emp:'هنوز سفارشی ثبت نکرده‌اید',empb:'ثبت اولین سفارش',cancel:'لغو سفارش',cfm:'سفارش لغو شود؟',
+ note:'پیام به تیم Codin…',send:'ارسال',you:'شما',team:'تیم Codin',sys:'سفارش ثبت شد',budget:'بودجه',created:'ثبت',upd:'آخرین تغییر',
+ ltype:'نوع پروژه',ltitle:'عنوان سفارش',ldesc:'توضیحات (چه چیزی نیاز دارید؟)',lbudget:'بودجه تقریبی (اختیاری)',nsub:'ثبت سفارش',sent:'سفارش ثبت شد ✓',
+ hprof:'اطلاعات حساب',lname:'نام و نام خانوادگی',lmail:'ایمیل',psub:'ذخیره',saved:'ذخیره شد ✓',hpass:'تغییر رمز عبور',lcur:'رمز فعلی',lnew:'رمز جدید (حداقل ۸ کاراکتر)',wsub:'تغییر رمز',
+ status:'وضعیت',nt:'یادداشت برای مشتری (اختیاری)',save:'ثبت تغییر',err:'خطا در ارتباط با سرور',who:'مشتری',noord:'سفارشی وجود ندارد'},
+ en:{orders:'My orders',nw:'New order',prof:'Profile',admin:'Admin',
+ st:{new:'Received',review:'In review',progress:'In progress',delivered:'Delivered',cancelled:'Cancelled'},
+ ty:{web:'Website',mobile:'Mobile app',ai:'AI',security:'Security',other:'Other'},
+ since:'Member since',code:'Tracking code',emp:'You have no orders yet',empb:'Place your first order',cancel:'Cancel order',cfm:'Cancel this order?',
+ note:'Message to the Codin team…',send:'Send',you:'You',team:'Codin team',sys:'Order received',budget:'Budget',created:'Created',upd:'Last update',
+ ltype:'Project type',ltitle:'Order title',ldesc:'Description (what do you need?)',lbudget:'Approx. budget (optional)',nsub:'Place order',sent:'Order placed ✓',
+ hprof:'Account details',lname:'Full name',lmail:'Email',psub:'Save',saved:'Saved ✓',hpass:'Change password',lcur:'Current password',lnew:'New password (min 8 chars)',wsub:'Change password',
+ status:'Status',nt:'Note to customer (optional)',save:'Save change',err:'Server connection error',who:'Customer',noord:'No orders'}};
+const T=()=>D[lang],FLOW=['new','review','progress','delivered'];
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fd=iso=>{try{return new Date(iso).toLocaleString(lang=='fa'?'fa-IR':'en-GB',{dateStyle:'medium',timeStyle:'short'})}catch{return iso}};
+const tok=()=>localStorage.token;
+let me=null,orders=[],all=[],tab='orders',open=new Set();
+async function api(path,body){
+ const r=await fetch(API+path,{method:body?'POST':'GET',headers:{'content-type':'application/json','accept-language':lang,authorization:'Bearer '+(tok()||'')},body:body?JSON.stringify(body):undefined});
+ const j=await r.json().catch(()=>({}));
+ if(!r.ok){if(r.status===401&&path!=='/api/password'){localStorage.removeItem('token');localStorage.removeItem('user');me=null;show()}throw Error(j.error||T().err)}
+ return j}
+const say=(el,txt,ok)=>{el.className='msg '+(ok?'ok':'er');el.textContent=txt};
+function track(o){
+ if(o.status=='cancelled')return `<div class="trk x">${FLOW.map(s=>`<i>${T().st[s]}</i>`).join('')}</div>`;
+ const k=FLOW.indexOf(o.status);return `<div class="trk">${FLOW.map((s,i)=>`<i class="${i<=k?'d':''} ${i==k?'c':''}">${T().st[s]}</i>`).join('')}</div>`}
+function logHtml(o){return `<ul class="log">${o.log.map(e=>{
+ const who=e.by=='admin'?T().team:e.by=='user'?T().you:'';
+ const head=[e.status?`<b>${T().st[e.status]}</b>`:'',who?esc(who):''].filter(Boolean).join(' · ');
+ const body=e.text?esc(e.text):'';
+ return `<li class="${e.by}"><small>${fd(e.at)}</small>${head?`<div>${head}</div>`:''}${body?`<div>${body}</div>`:''}</li>`}).join('')}</ul>`}
+function orderCard(o,adm){
+ const t=T(),op=open.has(o.id);
+ return `<article class="card ord" data-id="${esc(o.id)}"><div class="oh"><div><h3>${esc(o.title)}</h3><small>${t.code}: <span dir="ltr">${esc(o.code)}</span> · ${t.ty[o.type]||''}</small>${adm?`<small class="who">${t.who}: ${esc(o.user.name)} · ${esc(o.user.email)}</small>`:''}</div><span class="pill ${o.status}">${t.st[o.status]}</span></div>
+ ${track(o)}
+ <button class="b s" data-a="tg">${op?'▲':'▼'}</button>
+ ${op?`<div class="det"><div class="meta"><span class="pill">${t.created}: ${fd(o.at)}</span><span class="pill">${t.upd}: ${fd(o.upd)}</span>${o.budget?`<span class="pill">${t.budget}: ${esc(o.budget)}</span>`:''}</div><p>${esc(o.desc)}</p>${logHtml(o)}
+ ${adm?`<div class="ad"><select data-f="st">${['new','review','progress','delivered','cancelled'].map(s=>`<option value="${s}"${s==o.status?' selected':''}>${t.st[s]}</option>`).join('')}</select><input data-f="nt" maxlength="600" placeholder="${t.nt}"><button class="b" data-a="adm">${t.save}</button><div class="msg"></div></div>`
+ :`<div class="nf"><input data-f="nt" maxlength="600" placeholder="${t.note}"><button class="b" data-a="note">${t.send}</button></div><div class="msg"></div>${['new','review'].includes(o.status)?`<div class="act"><button class="b o" data-a="cn">${t.cancel}</button></div>`:''}`}</div>`:''}</article>`}
+function renderOrders(){
+ const t=T();$('#ol').innerHTML=orders.length?orders.map(o=>orderCard(o)).join(''):`<div class="card emp"><b>📦</b><p>${t.emp}</p><button class="b big" data-a="go">${t.empb}</button></div>`;
+ $('#s1').textContent=orders.length;$('#s2').textContent=orders.filter(o=>['new','review','progress'].includes(o.status)).length;$('#s3').textContent=orders.filter(o=>o.status=='delivered').length}
+function renderAdmin(){const t=T();$('#al').innerHTML=all.length?all.map(o=>orderCard(o,1)).join(''):`<div class="card emp"><p>${t.noord}</p></div>`}
+function labels(){
+ const t=T();[['orders',t.orders],['new',t.nw],['profile',t.prof],['admin',t.admin]].forEach(([k,v])=>$(`#tabs [data-t=${k}]`).textContent=v);
+ $('#l-type').textContent=t.ltype;$('#l-title').textContent=t.ltitle;$('#l-desc').textContent=t.ldesc;$('#l-budget').textContent=t.lbudget;$('#nsub').textContent=t.nsub;
+ const cur=$('#ty').value;$('#ty').innerHTML=Object.entries(t.ty).map(([k,v])=>`<option value="${k}">${v}</option>`).join('');if(cur)$('#ty').value=cur;
+ $('#h-prof').textContent=t.hprof;$('#l-name').textContent=t.lname;$('#l-mail').textContent=t.lmail;$('#psub').textContent=t.psub;
+ $('#h-pass').textContent=t.hpass;$('#l-cur').textContent=t.lcur;$('#l-new').textContent=t.lnew;$('#wsub').textContent=t.wsub;
+ if(me){$('#hs').textContent=`${t.since} ${fd(me.at).split(',')[0]}`}}
+function view(){['orders','new','profile','admin'].forEach(k=>$('#v-'+k).hidden=k!=tab);$$('#tabs button').forEach(b=>b.classList.toggle('on',b.dataset.t==tab))}
+function paint(){labels();view();renderOrders();if(me?.admin)renderAdmin()}
+function show(){const ok=!!(me&&tok());$('#guest').hidden=ok;$('#app').hidden=!ok;if(ok){$('#av').textContent=(me.name||'?').trim()[0].toUpperCase();$('#hn').textContent=me.name;$('#he').textContent=me.email;$('#pf').name.value=me.name;$('#pm').value=me.email;$('#tabs [data-t=admin]').hidden=!me.admin;if(tab=='admin'&&!me.admin)tab='orders';paint()}}
+async function load(){
+ if(!tok()){me=null;show();return}
+ try{me=(await api('/api/me')).user;orders=await api('/api/orders');all=me.admin?await api('/api/admin/orders'):[];show()}catch(e){if(tok()){me=me||null;$('#guest').hidden=false;$('#guest p').textContent=e.message}}}
+$('#gl').onclick=()=>$('#auth').click();
+$('#tabs').onclick=e=>{const b=e.target.closest('button');if(!b)return;tab=b.dataset.t;view()};
+document.addEventListener('authchange',()=>{open.clear();load()});
+new MutationObserver(()=>{if(me)paint()}).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
+document.addEventListener('click',async e=>{
+ const bt=e.target.closest('[data-a]');if(!bt)return;const card=bt.closest('.ord'),id=card?.dataset.id,a=bt.dataset.a,msg=card?.querySelector('.msg');
+ if(a=='go'){tab='new';view();return}
+ if(a=='tg'){open.has(id)?open.delete(id):open.add(id);paint();return}
+ try{
+  if(a=='note'){const v=card.querySelector('[data-f=nt]').value.trim();if(v.length<2)return;bt.disabled=true;const o=await api('/api/orders/note',{id,text:v});orders=orders.map(x=>x.id==id?o:x)}
+  else if(a=='cn'){if(!confirm(T().cfm))return;const o=await api('/api/orders/cancel',{id});orders=orders.map(x=>x.id==id?o:x)}
+  else if(a=='adm'){bt.disabled=true;const o=await api('/api/admin/order',{id,status:card.querySelector('[data-f=st]').value,note:card.querySelector('[data-f=nt]').value.trim()});all=all.map(x=>x.id==id?{...x,...o}:x);orders=orders.map(x=>x.id==id?{...x,...o}:x)}
+  else return;
+  paint()
+ }catch(x){bt.disabled=false;if(msg)say(msg,x.message)}});
+$('#nf').onsubmit=async e=>{e.preventDefault();const f=e.target,m=$('#nmsg'),b=$('#nsub');b.disabled=true;
+ try{const o=await api('/api/orders',Object.fromEntries(new FormData(f)));orders.unshift(o);if(me.admin)all.unshift({...o,user:{name:me.name,email:me.email}});f.reset();say(m,T().sent,1);open.add(o.id);tab='orders';paint();setTimeout(()=>m.textContent='',2500)}
+ catch(x){say(m,x.message)}b.disabled=false};
+$('#pf').onsubmit=async e=>{e.preventDefault();const m=$('#pmsg');
+ try{const j=await api('/api/profile',{name:e.target.name.value});me.name=j.user.name;localStorage.user=JSON.stringify({name:me.name,email:me.email});say(m,T().saved,1);show();apply()}catch(x){say(m,x.message)}};
+$('#wf').onsubmit=async e=>{e.preventDefault();const m=$('#wmsg');
+ try{await api('/api/password',Object.fromEntries(new FormData(e.target)));e.target.reset();say(m,T().saved,1)}catch(x){say(m,x.message)}};
+load();
+})();
+</script></body></html>

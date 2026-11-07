@@ -1,0 +1,11 @@
+/* پس‌زمینه ویدیویی کل سایت (لایه زیرین). تم تیره را اجباری می‌کند. */
+:root:root{--bg:#000;--card:rgba(6,22,34,.55);--b:#94cbc7;--p:#5b8b9e;--t:#eaf8f6;--m:#a9cbd0;--ink:#eaf8f6;--soft:#b6d6d0;--line:rgba(148,203,199,.28);--glow:rgba(91,139,158,.9);--grid:rgba(255,255,255,.05);color-scheme:dark}
+html{background:#000}
+html body{background:transparent!important}
+html body::before{display:none!important}
+#bgv{position:fixed;inset:0;z-index:-2;pointer-events:none;background:#000;contain:strict}
+#bgv video{display:block;width:100%;height:100%;object-fit:contain}
+#bgv:after{content:"";position:absolute;inset:0;background:linear-gradient(rgba(0,6,12,.25),rgba(0,6,12,.1) 45%,rgba(0,6,12,.35))}
+@media (max-aspect-ratio:9/16){#bgv video{object-fit:cover}}
+/* تیترهای گرادیانی روشن‌تر روی ویدیوی تیره */
+html .st,html .word{background-image:linear-gradient(90deg,#f2fbfa,#b4e1e4 50%,#9fd9d3)}
